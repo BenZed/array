@@ -1,4 +1,5 @@
 import { isArray } from '@benzed/types'
+import { binarySearch } from './binary-search'
 
 //// Types ////
 
@@ -8,7 +9,7 @@ type CompareFn<T> = NonNullable<Parameters<Array<T>['sort']>[0]>
 
 //// Helper ////
 
-function isSortedArray<T extends Sortable = number>(arr: unknown): arr is T[] {
+function isSortedArray<T extends Sortable = number>(arr: unknown): boolean {
     if (!isArray<T>(arr)) return false
 
     if (arr.length <= 1) return true
@@ -46,6 +47,11 @@ function descending<T>(a: T, b: T): number {
 }
 
 //// Main ////
+
+/**
+ * @deprecated Extends built-in {@link Array} class, which doesn't
+ * transpile nicely to older targets. Use {@link binaryFind} instead.
+ */
 class SortedArray<T extends Sortable> extends Array<T> {
     constructor(...params: readonly T[]) {
         // initialize array with length
@@ -148,24 +154,7 @@ class SortedArray<T extends Sortable> extends Array<T> {
     //// Helper ////
 
     private _getIndexViaBinarySearch(value: T): number {
-        let min = 0
-        let max = this.length
-
-        const isAscending = this[0] < this[this.length - 1]
-        // Even with a custom sorter, the array can only be in ascending order
-        // or descending order. It assumes the array is sorted so its considered
-        // ascending if the first is lesser than the last, and vice versa.
-
-        while (min < max) {
-            const mid = (min + max) >> 1
-            const _value = this[mid]
-            if (_value === value) return mid
-
-            if (isAscending ? _value < value : _value > value) min = mid + 1
-            else max = mid
-        }
-
-        return -1
+        return binarySearch(this, value)
     }
 }
 
