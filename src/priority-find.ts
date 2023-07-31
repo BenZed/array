@@ -1,6 +1,6 @@
-//// Shortcuts ////
+import { nil } from '@benzed/types'
 
-import { nil } from '@benzed/util'
+//// Shortcuts ////
 
 const { findIndex } = Array.prototype
 
@@ -13,7 +13,7 @@ type Predicate<T> = (value: T, index: number, array: ArrayLike<T>) => boolean
 /**
  * Execute findIndex with multiple predicates. Subsequent
  * predicates will be called if the previous fails
- * to retreive an index.
+ * to retrieve an index.
  */
 function priorityFindIndex<T>(
     input: ArrayLike<T>,
