@@ -1,5 +1,5 @@
 import { isArray } from '@benzed/types'
-import { binarySearch } from './binary-search'
+import { binaryIndexOf } from './binary-search'
 
 //// Types ////
 
@@ -154,7 +154,7 @@ class SortedArray<T extends Sortable> extends Array<T> {
     //// Helper ////
 
     private _getIndexViaBinarySearch(value: T): number {
-        return binarySearch(this, value)
+        return binaryIndexOf(this, value)
     }
 }
 
