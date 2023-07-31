@@ -33,8 +33,8 @@ describe('Sorted Array', () => {
         const nick = new Person('nick', 30)
         const jake = new Person('jake', 31)
         const ben = new Person('ben', 32)
-        const jimney = new Person('jimney', 35)
-        const ebenezer = new Person('ebenezer', 98)
+        const jim = new Person('jim', 35)
+        const eb = new Person('eb', 98)
 
         it('sorts contents', () => {
             const arr = new SortedArray<number>()
@@ -52,10 +52,10 @@ describe('Sorted Array', () => {
 
         it('works with any object that provides a numerical valueOf', () => {
             const people = new SortedArray()
-            people.push(nick, jake, ben, jimney, ebenezer, chuck)
+            people.push(nick, jake, ben, jim, eb, chuck)
             people.sort()
 
-            expect(people).toEqual([chuck, nick, jake, ben, jimney, ebenezer])
+            expect(people).toEqual([chuck, nick, jake, ben, jim, eb])
         })
     })
 
@@ -96,9 +96,9 @@ describe('Sorted Array', () => {
     describe('concat()', () => {
         it('does NOT sort output array', () => {
             const arr = new SortedArray<number>(0, 2, 4, 6)
-            const concated = arr.concat([1, 7])
+            const concatenated = arr.concat([1, 7])
 
-            expect(concated).toEqual([0, 2, 4, 6, 1, 7])
+            expect(concatenated).toEqual([0, 2, 4, 6, 1, 7])
         })
     })
 
@@ -116,7 +116,7 @@ describe('Sorted Array', () => {
             expect(dsc.indexOf(3)).toEqual(1)
         })
 
-        it('returns -1 if value doesnt exist', () => {
+        it("returns -1 if value doesn't exist", () => {
             expect(asc.indexOf(100)).toEqual(-1)
             expect(dsc.indexOf(100)).toEqual(-1)
         })
@@ -136,7 +136,7 @@ describe('Sorted Array', () => {
             expect(dsc.lastIndexOf(3)).toEqual(2)
         })
 
-        it('returns -1 if value doesnt exist', () => {
+        it("returns -1 if value doesn't exist", () => {
             expect(asc.lastIndexOf(100)).toEqual(-1)
         })
     })
