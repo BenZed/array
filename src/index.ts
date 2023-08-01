@@ -5,6 +5,7 @@ export * from './pluck'
 export * from './random'
 export * from './ensure'
 export * from './remove'
+export * from './binary-search'
 export * from './resolve-index'
 
 export * from './wrap'
