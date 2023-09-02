@@ -5,14 +5,13 @@ const { indexOf, push } = Array.prototype
 //// Main ////
 
 /**
- * If a value exists does not exist in an {@link ArrayLike} collection, it
+ * If a value does not exist in an {@link ArrayLike} collection, it
  * adds it to the collection. Otherwise, it does nothing.
  *
  * ```typescript
  * ensure([1], 1) // [1]
  * ensure([1], 2) // [1, 2]
  * ```
- *
  * @param arrayLike Collection
  * @param value Value to ensure
  */

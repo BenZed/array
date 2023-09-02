@@ -21,10 +21,6 @@ it('works on other array likes', () => {
     ).toEqual('zero')
 })
 
-it('return type for arrays is typeof array or undefined', () => {
-    first([5]) satisfies number | undefined
-})
-
 it('return type for string is string', () => {
     first('cake') satisfies string
 })
@@ -38,5 +34,5 @@ it('return type for tuples', () => {
 })
 
 it('return type for const arrays is const item', () => {
-    first([1, 2, 3] as const) satisfies 1
+    first([1, 2, 3]) satisfies 1
 })

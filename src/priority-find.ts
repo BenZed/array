@@ -1,12 +1,8 @@
-import { nil } from '@benzed/types'
-
-//// Shortcuts ////
-
-const { findIndex } = Array.prototype
+import { isArray, nil } from '@benzed/types'
 
 //// Type ////
 
-type Predicate<T> = (value: T, index: number, array: ArrayLike<T>) => boolean
+type Predicate<T> = (value: T, index: number, array: T[]) => boolean
 
 //// Main ////
 
@@ -19,11 +15,13 @@ function priorityFindIndex<T>(
     input: ArrayLike<T>,
     ...predicates: Predicate<T>[]
 ): number {
-    const inputFindIndex = findIndex.bind(input)
+    const array = isArray(input) ? (input as T[]) : Array.from(input)
 
     for (const predicate of predicates) {
-        const index = inputFindIndex(predicate)
-        if (index >= 0) return index
+        const index = array.findIndex(predicate)
+        if (index >= 0) {
+            return index
+        }
     }
 
     return -1

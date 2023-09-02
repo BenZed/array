@@ -13,8 +13,7 @@ function randomIndex(input: ArrayLike<unknown>): number {
 //// Main ////
 
 /**
- * Returns a random element from an ArrayLike or Iterable
- * @param input
+ * Returns a random element from an {@link ArrayLike} or {@link Iterable}
  */
 function random<T>(input: ArrayLike<T> | Iterable<T>): T
 function random<T>(this: ArrayLike<T> | Iterable<T>): T
