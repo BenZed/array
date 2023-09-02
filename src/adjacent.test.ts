@@ -32,3 +32,7 @@ it('alternatively takes a delta argument', () => {
 it('delta argument can be reverse', () => {
     expect(adjacent(array, 'b', -3)).toEqual('f')
 })
+
+it('throws if empty', () => {
+    expect(() => adjacent([], 1)).toThrow()
+})

@@ -1,25 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { nth } from './nth'
+
 //// Type ////
 
-type Last<T> = T extends readonly [...any, infer Ti]
-    ? Ti
-    : T extends Array<infer Ti>
-    ? /**/ Ti | undefined
-    : /**/ T extends string
-    ? /**/ string
-    : /**/ T extends ArrayLike<infer Ti>
-    ? /**/ Ti | undefined
-    : /**/ T
+type Last<T> = T extends [infer Ti] ? Ti : never
 
 //// Main ////
 
 /**
- * Returns the first element of an ArrayLike.
- * @param arrayLike
+ * Returns the last element in the {@link ArrayLike}
+ * @throws if empty.
  */
-function last<T extends ArrayLike<any>>(arrayLike: T): Last<T> {
-    return arrayLike[arrayLike.length - 1] as Last<T>
+function last<const T extends readonly any[]>(arrayLike: T): Last<T>
+function last<T>(arrayLike: ArrayLike<T>): T
+function last(arrayLike: ArrayLike<unknown>) {
+    const lastIndex = Math.max(arrayLike.length - 1, 0)
+    return nth(arrayLike, lastIndex)
 }
 
 //// Exports ////

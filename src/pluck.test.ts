@@ -18,18 +18,15 @@ it('returns results to new array', () => {
     expect(even).toEqual([2, 4, 6, 8])
 })
 
-it.skip('predicate takes value, index, array args', () => {
-    // const arr = ['zero']
-    // pluck(arr, (v,i,a) => {
-    //     expect(v).toEqual('zero')
-    //     expect(i).toEqual(0)
-    //     expect(a).toEqual(arr)
-    //     expectTypeOf(v).toEqualTypeOf<string>()
-    //     expectTypeOf(i).toEqualTypeOf<number>()
-    //     expectTypeOf(a).toEqualTypeOf<ArrayLike<string>>()
-    //     return true
-    // })
-})
+// it.skip('predicate takes value, index, array args', () => {
+//     const arr = ['zero']
+//     pluck(arr, (v, i, a) => {
+//         expect(v).toEqual('zero')
+//         expect(i).toEqual(0)
+//         expect(a).toEqual(arr)
+//         return true
+//     })
+// })
 
 describe('count', () => {
     it('limits the number of results to take', () => {
@@ -60,12 +57,11 @@ describe('type-guard filter', () => {
         strings satisfies string[]
     })
 
-    it.skip('read-only arrays', () => {
-        // const arr = [{ foo: 'string' }, { foo: 'bar' }, { bar: 0 }] as const
-        // const isFoo = (i: unknown): i is { foo: string } =>
-        //     isRecordOf(isString)(i)
-        // const foos = pluck(arr, isFoo)
-        // expect(foos).toHaveLength(2)
-        // expectTypeOf(foos).toMatchTypeOf<{ foo: string }[]>()
-    })
+    // it('read-only arrays', () => {
+    //     const arr = [{ foo: 'string' }, { foo: 'bar' }, { bar: 0 }] as const
+    //     const isFoo = (i: unknown): i is { foo: string } =>
+    //         isRecord(isString)(i)
+    //     const foos = pluck(arr, isFoo)
+    //     expect(foos).toHaveLength(2)
+    // })
 })

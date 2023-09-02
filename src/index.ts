@@ -12,6 +12,7 @@ export * from './wrap'
 export * from './unwrap'
 export * from './first'
 export * from './last'
+export * from './nth'
 
 export * from './min-max'
 export * from './adjacent'
